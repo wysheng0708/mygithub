@@ -3,83 +3,74 @@
 # value都行
 #字典用{}
 #字典是可变序列，但是key不能直接修改
+''''''
+'''
+特点
+无序（Python 3.7+ 保持插入顺序）
+键值对存储
+键必须是不可变类型
+键唯一，值可以重复
+可变
+使用花括号 {} 表示
 
-#创建
-#1.{}
-d={'key1':'value1',10:30,43:'zoo','d':30,10:4324}#key重复会覆盖
-print(d)
-#2.zip()和dict()
-lst1=list('hello')
-lst2=list(range(3))
-d=zip(lst1,lst2)
-print(d)#zip输出的结果是zip格式 看不到 要转换
-# print(list(d))#转成列表，字典里面的键值对转化为元组类型
-# [('h', 0), ('e', 1), ('l', 2)]
-d=dict(d)#用dict转成字典
-print(d)
+1.创建
+# 直接创建
+dict1 = {'name': 'Alice', 'age': 25, 'city': 'New York'}
+dict2 = {1: 'one', 2: 'two', 3: 'three'}
 
-#key
-t=('dd',2,3)
-d={t:1}
-print(d)
-# lst=[1,2,3]
-# d={lst:1}
-# print(d)
+# 使用dict()构造函数
+dict3 = dict()  # 空字典
+dict4 = dict(name='Bob', age=30)  # {'name': 'Bob', 'age': 30}
+dict5 = dict([('a', 1), ('b', 2)])  # {'a': 1, 'b': 2}
 
-#字典的访问
-#1.用d[key]
-d={'h': 0, 'e': 1, 'l': 2}
-print(d['h'])
-#2. d.get()
-print(d.get('h'))
-print(d.get('java','不存在'))
-#两者区别在于：1如果没有key会报错，2会返回默认值，可以修改
+# 字典推导式
+dict6 = {x: x**2 for x in range(5)}  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 
-#字典的遍历
-for item in d.items():
-    print(item)#可以发现，遍历字典得到的是每一个元素对都是元组类型
-#也可以分别获取key和value
-for key,value in d.items():
-    print(key,value)#直接得到元素
+2.遍历
+person = {'name': 'Alice', 'age': 25, 'city': 'New York'}
+# 方法1：遍历键
+for key in person:
+    print(f"Key: {key}")
 
-#字典的函数：.keys().values().items()
-d={1001:'lm',1002:'wh',1003:'nn'}
-d[1004]='zll'#直接添加新元素对
-#获取key
-keys=d.keys()
-print(keys)#结果是dict_keys([1001, 1002, 1003, 1004])，可以转为其他类型
-print(list(keys))
-print(tuple(keys))
-#获取value
-values=d.values()
-print(values)
-print(list(values))
-print(tuple(values))
-#获取键值对 用items（） 可以转化为lst或者元组
-lst=list(d.items())
-print(lst)
-t=tuple(d.items())
-print(t)
+# 方法2：遍历键
+for key in person.keys():
+    print(f"Key: {key}")
 
-#把别的类型转为字典：
-d=dict(t)
-print(d)
-# d=dict(list)
-# print(d)
+# 方法3：遍历值
+for value in person.values():
+    print(f"Value: {value}")
 
-#POP函数会取出某个元素对然后删除
-print(d.pop(1004))
-print(d)
-print(d.pop(1008,'不存在'))
+# 方法4：遍历键值对
+for key, value in person.items():
+    print(f"{key}: {value}")
 
-#字典生成式：
-#d={key:value for item in range}
-#d={key:value for key,value in zip(lst1,lst2)}
-import random
-d={item:random.randint(1,100) for item in range(4)}
-print(d)
-d={key:value for key,value in zip(lst1,lst2)}
-print(d)
+3.函数
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+# 访问元素
+value = my_dict['a']  # 直接访问
+value = my_dict.get('a')  # 安全访问，键不存在返回None
+value = my_dict.get('d', 0)  # 键不存在返回默认值0
 
+# 添加和修改元素
+my_dict['d'] = 4  # 添加新键值对
+my_dict['a'] = 10  # 修改现有键的值
+
+# 删除元素
+del my_dict['b']  # 删除指定键
+popped = my_dict.pop('c')  # 删除并返回值
+popped_item = my_dict.popitem()  # 删除并返回最后插入的键值对
+
+# 其他方法
+keys = my_dict.keys()  # 所有键
+values = my_dict.values()  # 所有值
+items = my_dict.items()  # 所有键值对
+
+my_dict.update({'e': 5, 'f': 6})  # 批量更新
+copied_dict = my_dict.copy()  # 浅拷贝
+my_dict.clear()  # 清空字典
+
+# 内置函数
+length = len(my_dict)
+'''
 
 
