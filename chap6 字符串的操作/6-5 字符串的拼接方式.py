@@ -1,0 +1,14 @@
+s1='1d'
+s2='2c'
+#1,+
+s=s1+s2
+print(s)
+#2.join
+print(''.join([s1,s2]))
+print('-'.join(['12222','wdc','213']))
+#3.直接拼接
+print('1''2')
+#4.用格式化字符串
+print('%s%s'%(s1,s2))
+print(f'{s1}{s2}')
+print('{0}{1}'.format(s1,s2))
